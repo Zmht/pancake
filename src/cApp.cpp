@@ -6,14 +6,13 @@
 bool MyApp::OnInit()
 {
     //MyFrame *frame = new MyFrame( "Hello World", wxPoint(50, 50), wxGetDisplaySize());
-    MyFrame *SmallerFrame = new MyFrame("")
-    frame->Show( true );
+    MyFrame *SmallerFrame = new MyFrame("Pancake", wxPoint(50, 50), wxSize(400, 600));
+    SmallerFrame->Show( true );
 
     return true;
 }
 
 wxBEGIN_EVENT_TABLE(MyFrame, wxFrame)
-    EVT_MENU(ID_Hello,   MyFrame::OnHello)
     EVT_MENU(wxID_EXIT,  MyFrame::OnExit)
     EVT_MENU(wxID_ABOUT, MyFrame::OnAbout)
     EVT_MENU(ID_CHAT_SETTINGS, MyFrame::ChatSettings)

@@ -21,10 +21,6 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
     wxMenu *menuChat = new wxMenu;
     menuChat->Append(ID_CHAT_SETTINGS, "&Chat Settings", "Chat Settings");
 
-    wxMenu *menuVideo = new wxMenu;
-    menuVideo->Append(ID_VIDEO_SETTINGS, "&Video Settings\tCTRL-G", "Video Settings");
-    menuVideo->Append(ID_CAMERA_SETTINGS, "&Camera", "Camera settings");
-
     wxMenu *menuHelp = new wxMenu;
     menuHelp->Append(wxID_ABOUT);
     menuHelp->Append(ID_HELP_DOCS, "&Docs", "Read the docs!");
@@ -32,59 +28,46 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
     wxMenuBar *menuBar = new wxMenuBar;
     menuBar->Append( menuFile, "&File" );
     menuBar->Append( menuChat, "&Chat");
-    menuBar->Append( menuVideo, "&Video");   
+    //menuBar->Append( menuVideo, "&Video");   
     menuBar->Append( menuHelp, "&Help" );
     SetMenuBar( menuBar );
 
-    wxPanel *panel = new wxPanel(this, wxID_ANY, wxPoint(0, 0), wxSize(300, wxDisplay().GetGeometry().GetHeight()));
-    wxBoxSizer *mainLayoutSizer = new wxBoxSizer( wxVERTICAL );
-    mainLayoutSizer->Add(
-        new wxTextCtrl(panel, wxID_ANY, "IP:PORT", wxDefaultPosition, wxSize(100, 30)),
+    wxBoxSizer *MainSizer = new wxBoxSizer(wxVERTICAL);
+
+    MainSizer->Add (
+        new wxTextCtrl(this, wxID_ANY, "Messages:", wxDefaultPosition, wxSize(300, 400), wxTE_MULTILINE), //Makes text Ctrl with minimum size of 100 by 60 this is for previous messages
+        1,                  //Vertically Stretchable
+        wxEXPAND | wxALL,   //Horizontally stretchable and border all around
+        10                  //Border size of 10
+    );
+
+    wxBoxSizer *MessageSizer = new wxBoxSizer(wxHORIZONTAL); 
+
+    MessageSizer->Add (
+        new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(300, 30)), //Message to send
+        0, 
+        wxEXPAND | wxALL, 
+        5
+    );
+
+    MessageSizer->Add (
+        new wxButton(this, wxID_ANY, "GO!", wxDefaultPosition, wxSize(50, 30)),
+        0,
+        wxEXPAND | wxALL,
+        5
+    );
+
+    MainSizer->Add (
+        MessageSizer,
         0,
         wxALIGN_CENTER
     );
-    mainLayoutSizer->Add(
-        new wxButton(panel, wxID_ANY, "ADD CONTACT", wxDefaultPosition, wxSize(60, 30)),
-        0,
-        wxALIGN_CENTER
-    );
-    SetSizer(mainLayoutSizer);
 
+    SetSizerAndFit(MainSizer); // use the sizer for layout and size window
 
-
-
-
-
-
-   /*      wxBoxSizer *topsizer = new wxBoxSizer( wxVERTICAL );
-    // create text ctrl with minimal size 100x60
-    topsizer->Add(
-        new wxTextCtrl( this, -1, "My text.", wxDefaultPosition, wxSize(100,60), wxTE_MULTILINE),
-        1,            // make vertically stretchable
-        wxEXPAND |    // make horizontally stretchable
-        wxALL,        //   and make border all around
-        10 );         // set border width to 10
-    wxBoxSizer *button_sizer = new wxBoxSizer( wxHORIZONTAL );
-    button_sizer->Add(
-        new wxButton( this, wxID_OK, "OK" ),
-        0,           // make horizontally unstretchable
-        wxALL,       // make border all around (implicit top alignment)
-        10 );        // set border width to 10
-    button_sizer->Add(
-        new wxButton( this, wxID_CANCEL, "Cancel" ),
-        0,           // make horizontally unstretchable
-        wxALL,       // make border all around (implicit top alignment)
-        10 );        // set border width to 10
-    topsizer->Add(
-        button_sizer,
-        0,                // make vertically unstretchable
-        wxALIGN_CENTER ); // no border and centre horizontally
-    SetSizerAndFit(topsizer); // use the sizer for layout and size window
-                              // accordingly and prevent it from being resized
-                              // to smaller size */
 
     CreateStatusBar();
-    SetStatusText( "Welcome to the future of video calls!" );
+    SetStatusText( "Welcome to the future of chat!" );
 
 }
 
