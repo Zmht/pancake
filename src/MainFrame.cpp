@@ -44,14 +44,14 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
     wxBoxSizer *MessageSizer = new wxBoxSizer(wxHORIZONTAL); 
 
     MessageSizer->Add (
-        new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(300, 30)), //Message to send
+        new wxListBox(this, wxID_ANY, wxDefaultPosition, wxSize(300, 30)), //Message to send
         0, 
         wxEXPAND | wxALL, 
         5
     );
 
     MessageSizer->Add (
-        new wxButton(this, wxID_ANY, "GO!", wxDefaultPosition, wxSize(50, 30)),
+        new wxButton(this, ID_GO_BUTTON, "GO!", wxDefaultPosition, wxSize(50, 30)),
         0,
         wxEXPAND | wxALL,
         5

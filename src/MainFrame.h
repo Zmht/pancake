@@ -19,6 +19,7 @@ private:
     void OnOpen(wxCommandEvent& event);
     void OnSave(wxCommandEvent& WXUNUSED(event));
     void OpenDocs(wxCommandEvent& event);
+    void OnButtonClicked(wxCommandEvent& event);
     wxButton* test_btn;
     wxButton* two_button;
     wxDECLARE_EVENT_TABLE();

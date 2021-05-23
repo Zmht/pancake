@@ -79,3 +79,7 @@ void MyFrame::OpenDocs(wxCommandEvent& event)
     wxLaunchDefaultBrowser("https:/zmht25.ddns.net");
 }
 
+void MyFrame::OnButtonClicked(wxCommandEvent& event)
+{
+    
+}
