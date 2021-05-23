@@ -3,6 +3,9 @@
 #include <wx/filedlg.h>
 #include <wx/utils.h>
 #include <wx/wfstream.h>
+#include <wx/datetime.h>
+#include <fstream>
+#include <iostream>
 
 bool contentSaved = true;
 
@@ -79,7 +82,14 @@ void MyFrame::OpenDocs(wxCommandEvent& event)
     wxLaunchDefaultBrowser("https:/zmht25.ddns.net");
 }
 
+
 void MyFrame::OnButtonClicked(wxCommandEvent& event)
 {
-    
+    MyFrame::MessagesFile.open("MessageLogs/Log.txt", std::ios::out | std::ios::app);
+    MyFrame::Messages->AppendString(ToSend->GetValue());
+    MyFrame::MessagesFile << ToSend->GetValue() + "\n";
+    MyFrame::MessagesFile.close();
+    ToSend->ChangeValue( "" );
 }
+
+

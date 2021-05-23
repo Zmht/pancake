@@ -1,4 +1,6 @@
 #include <wx/wxprec.h>
+#include<iostream>
+#include<fstream>
 #ifndef WX_PRECOMP
     #include <wx/wx.h>
 #endif
@@ -22,5 +24,8 @@ private:
     void OnButtonClicked(wxCommandEvent& event);
     wxButton* test_btn;
     wxButton* two_button;
+    wxListBox* Messages;
+    wxTextCtrl *ToSend;
+    std::ofstream MessagesFile;
     wxDECLARE_EVENT_TABLE();
 };

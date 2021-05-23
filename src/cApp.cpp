@@ -20,7 +20,8 @@ wxBEGIN_EVENT_TABLE(MyFrame, wxFrame)
     EVT_MENU(ID_FILE_OPEN, MyFrame::OnOpen)
     EVT_MENU(ID_SAVE_AS, MyFrame::OnSave)
     EVT_MENU(ID_HELP_DOCS, MyFrame::OpenDocs)
-    EVT_BUTTON(ID_GO_BUTTON, MyFrame::OnButton)
+    EVT_BUTTON(ID_GO_BUTTON, MyFrame::OnButtonClicked)
+    EVT_TEXT_ENTER(ID_TO_SEND, MyFrame::OnButtonClicked)
 wxEND_EVENT_TABLE()
 
 

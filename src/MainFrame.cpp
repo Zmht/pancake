@@ -34,24 +34,35 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
 
     wxBoxSizer *MainSizer = new wxBoxSizer(wxVERTICAL);
 
-    MainSizer->Add (
+    /** MainSizer->Add (
         new wxTextCtrl(this, wxID_ANY, "Messages:", wxDefaultPosition, wxSize(300, 400), wxTE_MULTILINE), //Makes text Ctrl with minimum size of 100 by 60 this is for previous messages
         1,                  //Vertically Stretchable
         wxEXPAND | wxALL,   //Horizontally stretchable and border all around
         10                  //Border size of 10
-    );
+    ); */
 
-    wxBoxSizer *MessageSizer = new wxBoxSizer(wxHORIZONTAL); 
 
-    MessageSizer->Add (
-        new wxListBox(this, wxID_ANY, wxDefaultPosition, wxSize(300, 30)), //Message to send
-        0, 
+    Messages = new wxListBox(this, wxID_ANY, wxDefaultPosition, wxSize(300, 400)); //Message to send
+    MainSizer->Add (
+        Messages,
+        1, 
         wxEXPAND | wxALL, 
         5
     );
 
+    wxBoxSizer *MessageSizer = new wxBoxSizer(wxHORIZONTAL); 
+
+    ToSend = new wxTextCtrl(this, ID_TO_SEND, "", wxDefaultPosition, wxSize(300, 30), wxTE_PROCESS_ENTER);
     MessageSizer->Add (
-        new wxButton(this, ID_GO_BUTTON, "GO!", wxDefaultPosition, wxSize(50, 30)),
+        ToSend,
+        0,
+        wxEXPAND | wxALL,
+        5
+    );
+
+    wxButton *GoButton = new wxButton(this, ID_GO_BUTTON, "GO!", wxDefaultPosition, wxSize(50, 30));
+    MessageSizer->Add (
+       GoButton,
         0,
         wxEXPAND | wxALL,
         5
@@ -69,5 +80,8 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
     CreateStatusBar();
     SetStatusText( "Welcome to the future of chat!" );
 
+
+
 }
 
+  

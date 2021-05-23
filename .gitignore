@@ -1,6 +1,9 @@
 # Prerequisites
 *.d
 
+#Private
+MessageLogs/
+
 #Editors
 .vscode/
 
