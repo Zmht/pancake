@@ -20,6 +20,8 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
 
     wxMenu *menuChat = new wxMenu;
     menuChat->Append(ID_CHAT_SETTINGS, "&Chat Settings", "Chat Settings");
+    menuChat->Append(ID_CLEAR_CHAT, "&Clear", "Clear the chat list.");
+    menuChat->Append(ID_OVERWRITE_CHAT, "&Overwrite Chat", "Fills the chat file with 0s");
 
     wxMenu *menuHelp = new wxMenu;
     menuHelp->Append(wxID_ABOUT);
@@ -32,7 +34,7 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
     menuBar->Append( menuHelp, "&Help" );
     SetMenuBar( menuBar );
 
-    wxBoxSizer *MainSizer = new wxBoxSizer(wxVERTICAL);
+    MainSizer = new wxBoxSizer(wxVERTICAL);
 
     /** MainSizer->Add (
         new wxTextCtrl(this, wxID_ANY, "Messages:", wxDefaultPosition, wxSize(300, 400), wxTE_MULTILINE), //Makes text Ctrl with minimum size of 100 by 60 this is for previous messages
@@ -50,7 +52,7 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
         5
     );
 
-    wxBoxSizer *MessageSizer = new wxBoxSizer(wxHORIZONTAL); 
+    MessageSizer = new wxBoxSizer(wxHORIZONTAL); 
 
     ToSend = new wxTextCtrl(this, ID_TO_SEND, "", wxDefaultPosition, wxSize(300, 30), wxTE_PROCESS_ENTER);
     MessageSizer->Add (
@@ -60,7 +62,7 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
         5
     );
 
-    wxButton *GoButton = new wxButton(this, ID_GO_BUTTON, "GO!", wxDefaultPosition, wxSize(50, 30));
+    GoButton = new wxButton(this, ID_GO_BUTTON, "GO!", wxDefaultPosition, wxSize(50, 30));
     MessageSizer->Add (
        GoButton,
         0,

@@ -10,6 +10,6 @@ clean :
 	rm -rf $(BUILD_DIR)
 
 gui: $(SRC_DIR)/*
-	g++ src/* `wx-config --cxxflags --libs` -o gui   
+	g++ src/* `wx-config --cxxflags --libs` -std=c++17 -o gui   
 	./gui
 

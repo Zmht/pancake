@@ -13,6 +13,8 @@ class MyFrame: public wxFrame
 {
 public:
     MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size);
+    std::ofstream MessagesFile;
+
 private:
     void OnHello(wxCommandEvent& event);
     void OnExit(wxCommandEvent& event);
@@ -21,11 +23,16 @@ private:
     void OnOpen(wxCommandEvent& event);
     void OnSave(wxCommandEvent& WXUNUSED(event));
     void OpenDocs(wxCommandEvent& event);
-    void OnButtonClicked(wxCommandEvent& event);
-    wxButton* test_btn;
-    wxButton* two_button;
+    void OnSend(wxCommandEvent& event);
+    void ClearChat(wxCommandEvent& event);
+    void OverwriteChat(wxCommandEvent& event);
+
     wxListBox* Messages;
     wxTextCtrl *ToSend;
-    std::ofstream MessagesFile;
+    wxBoxSizer *MessageSizer;
+    wxBoxSizer *MainSizer;
+    wxButton *GoButton;
+
+
     wxDECLARE_EVENT_TABLE();
 };

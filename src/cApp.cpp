@@ -20,8 +20,12 @@ wxBEGIN_EVENT_TABLE(MyFrame, wxFrame)
     EVT_MENU(ID_FILE_OPEN, MyFrame::OnOpen)
     EVT_MENU(ID_SAVE_AS, MyFrame::OnSave)
     EVT_MENU(ID_HELP_DOCS, MyFrame::OpenDocs)
-    EVT_BUTTON(ID_GO_BUTTON, MyFrame::OnButtonClicked)
-    EVT_TEXT_ENTER(ID_TO_SEND, MyFrame::OnButtonClicked)
+    EVT_MENU(ID_CLEAR_CHAT, MyFrame::ClearChat)
+    EVT_MENU(ID_OVERWRITE_CHAT, MyFrame::OverwriteChat)
+
+    EVT_BUTTON(ID_GO_BUTTON, MyFrame::OnSend)
+    EVT_TEXT_ENTER(ID_TO_SEND, MyFrame::OnSend)
+
 wxEND_EVENT_TABLE()
 
 
