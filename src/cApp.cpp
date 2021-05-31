@@ -1,13 +1,17 @@
 // wxWidgets "Hello world" Program
 // For compilers that support precompilation, includes "wx/wx.h".
 #include "cApp.h"
-#include "MainFrame.h"
+#include "MyFrame.h"
+#include "ConnectionFrame.h"
 
 bool MyApp::OnInit()
 {
-    //MyFrame *frame = new MyFrame( "Hello World", wxPoint(50, 50), wxGetDisplaySize());
     MyFrame *SmallerFrame = new MyFrame("Pancake", wxPoint(50, 50), wxSize(400, 600));
     SmallerFrame->Show( true );
+
+    ConnectionFrame *ConnectFrame = new ConnectionFrame("Connection", wxPoint(50, 50), wxSize(200, 500));
+    ConnectFrame->Show( true );
+
 
     return true;
 }
@@ -25,7 +29,12 @@ wxBEGIN_EVENT_TABLE(MyFrame, wxFrame)
 
     EVT_BUTTON(ID_GO_BUTTON, MyFrame::OnSend)
     EVT_TEXT_ENTER(ID_TO_SEND, MyFrame::OnSend)
+wxEND_EVENT_TABLE()
 
+
+
+wxBEGIN_EVENT_TABLE(ConnectionFrame, wxFrame)
+    EVT_BUTTON(ID_CONNECT_BTN, ConnectionFrame::OnConnect)
 wxEND_EVENT_TABLE()
 
 
