@@ -13,6 +13,11 @@ class MyFrame: public wxFrame
 {
 public:
     MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size);
+    wxListBox* Messages;
+    wxTextCtrl *ToSend;
+    wxBoxSizer *MessageSizer;
+    wxBoxSizer *MainSizer;
+    wxButton *GoButton;
     
 private:
     void OnHello(wxCommandEvent& event);
@@ -26,11 +31,9 @@ private:
     void ClearChat(wxCommandEvent& event);
     void OverwriteChat(wxCommandEvent& event);
 
-    wxListBox* Messages;
-    wxTextCtrl *ToSend;
-    wxBoxSizer *MessageSizer;
-    wxBoxSizer *MainSizer;
-    wxButton *GoButton;
+    void SetToSendFocus();
+
+    
     
 
 

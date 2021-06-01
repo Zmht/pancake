@@ -12,7 +12,7 @@ ConnectionFrame::ConnectionFrame(const wxString& title, const wxPoint& pos, cons
 
    wxBoxSizer* MainSizer = new wxBoxSizer(wxVERTICAL);
 
-   NameField = new wxTextCtrl(this, ID_NAME, "name", wxDefaultPosition, wxSize(200, 30));
+   NameField = new wxTextCtrl(this, ID_NAME, "name", wxDefaultPosition, wxSize(200, 30), wxTE_PROCESS_ENTER);
    MainSizer->Add(
        NameField,
        0,

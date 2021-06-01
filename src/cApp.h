@@ -5,10 +5,13 @@
 #endif
 #pragma once
 
+//TODO: Rename cAPp to MyApp because class names
+
 class MyApp: public wxApp
 {
 public:
     virtual bool OnInit();
+    MyFrame *SmallerFrame;
 };
 
 

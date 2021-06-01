@@ -119,6 +119,8 @@ void MyFrame::OverwriteChat(wxCommandEvent& event)
 void ConnectionFrame::OnConnect(wxCommandEvent& event)
 {
     futils::InitDateFile(NameField->GetValue());
+    ConnectionFrame::Close();   
+    // TODO: Rename smaller frame to something that makes sense.
 }
 
 
